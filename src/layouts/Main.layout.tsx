@@ -6,7 +6,7 @@ export const MainLayout = () => {
   return (
     <div className={classes.root}>
       <header className={classes.header}>
-        <h1>Quiz</h1>
+        <h1>Quizzly</h1>
       </header>
       <section className={classes.main}>
         <Outlet />

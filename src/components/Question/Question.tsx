@@ -1,11 +1,33 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Card, Radio, Stack, Text } from '@mantine/core';
-import { Question } from '@/schema';
+import { AnswerMap, Question } from '@/schema';
 import classes from './Question.module.css';
 
-export const QuestionComponent = (props: Question) => {
-  const { question, possibleAnswers, correctAnswer } = props;
-  const [selectedOption, setSelectedOption] = useState<string>();
+interface QuestionProps extends Question {
+  currentQuestion: number;
+  handleSaveAnswer: (id: number, option: string) => void;
+  answers: AnswerMap;
+}
+
+export const QuestionComponent = (props: QuestionProps) => {
+  const {
+    question,
+    possibleAnswers,
+    correctAnswer,
+    currentQuestion,
+    id,
+    answers,
+    handleSaveAnswer,
+  } = props;
+  const [selectedOption, setSelectedOption] = useState<string | undefined>();
+
+  useEffect(() => {
+    if (answers[id]) {
+      setSelectedOption(answers[id]);
+    } else {
+      setSelectedOption(undefined);
+    }
+  }, [currentQuestion, setSelectedOption]);
 
   const lang = 'pl';
 
@@ -18,16 +40,12 @@ export const QuestionComponent = (props: Question) => {
       }
       return '';
     },
-    [selectedOption]
+    [selectedOption, currentQuestion]
   );
 
   const handleCheckAnswer = (option: string) => {
     setSelectedOption(option);
-    if (option === correctAnswer) {
-      setTimeout(() => {
-        alert('great answer!');
-      }, 500);
-    }
+    handleSaveAnswer(id, option);
   };
 
   return (
@@ -35,11 +53,11 @@ export const QuestionComponent = (props: Question) => {
       <Text fw={700}>{typeof question === 'object' ? question[lang] : question}</Text>
       <Card.Section py="md" px="lg">
         {Object.keys(possibleAnswers).length > 0 ? (
-          <Radio.Group onChange={handleCheckAnswer}>
+          <Radio.Group onChange={handleCheckAnswer} defaultValue={undefined}>
             <Stack>
               {Object.entries(possibleAnswers).map(([key, value]) => (
                 <Radio.Card value={key} className={`${classes.option} ${getChoiceClassName(key)}`}>
-                  <Radio.Indicator />
+                  <Radio.Indicator checked={selectedOption === key} />
                   {typeof value === 'object' ? value[lang] : value}
                 </Radio.Card>
               ))}

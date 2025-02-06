@@ -1,7 +1,8 @@
-.summaryStats {
+.statsWrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem;
-    gap: 2rem;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
 }

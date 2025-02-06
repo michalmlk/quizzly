@@ -1,0 +1,14 @@
+:root {
+    --footer-height: 80px;
+    --header-height: 80px;
+
+    --main-padding: 2rem;
+    --layout-background-color: #ffff;
+    --layout-border: 1px solid #dddd;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}

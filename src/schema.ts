@@ -1,11 +1,15 @@
 export interface Question {
+  id: number;
   question: string | Record<string, string>;
   possibleAnswers: Record<string, string | number | Record<string, string>>;
   correctAnswer: string;
 }
 
+export type AnswerMap = Record<number, string>;
+
 export const huntingQuestions: Question[] = [
   {
+    id: 1,
     question: 'Jaki jest okres polowań na jelenia byka?',
     possibleAnswers: {
       A: '21 sierpnia – 28 lutego',
@@ -16,6 +20,7 @@ export const huntingQuestions: Question[] = [
     correctAnswer: 'A',
   },
   {
+    id: 2,
     question: {
       pl: 'W jakim okresie można polować na dzika?',
       en: 'During which period can wild boars be hunted?',
@@ -29,6 +34,7 @@ export const huntingQuestions: Question[] = [
     correctAnswer: 'A',
   },
   {
+    id: 3,
     question: 'Jaki jest okres polowań na sarnę rogacza?',
     possibleAnswers: {
       A: '1 maja – 30 września',
@@ -39,6 +45,7 @@ export const huntingQuestions: Question[] = [
     correctAnswer: 'A',
   },
   {
+    id: 4,
     question: {
       pl: 'Kiedy można polować na bażanta?',
       en: 'When can pheasants be hunted?',
@@ -52,6 +59,7 @@ export const huntingQuestions: Question[] = [
     correctAnswer: 'C',
   },
   {
+    id: 5,
     question: 'Jaki jest okres polowań na lisa?',
     possibleAnswers: {
       A: '1 czerwca – 31 grudnia',

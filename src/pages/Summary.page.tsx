@@ -11,7 +11,7 @@ const icons = {
 };
 
 export const Summary = () => {
-  const { correctAnswers, questions, handleResetStats } = useContext(QuizContext);
+  const { getNumberOfCorrectAnswers, questions, handleResetStats } = useContext(QuizContext);
   const navigate = useNavigate();
 
   const handleReset = () => {
@@ -19,7 +19,9 @@ export const Summary = () => {
     navigate('/');
   };
 
-  const correctionPercentage = correctAnswers / questions.length;
+  const correctAnswers = getNumberOfCorrectAnswers();
+
+  const correctionPercentage = (correctAnswers / questions.length) * 100;
 
   const Icon = icons.up;
 
@@ -31,7 +33,7 @@ export const Summary = () => {
             size={80}
             roundCaps
             thickness={8}
-            sections={[{ value: correctionPercentage, color: 'red' }]}
+            sections={[{ value: correctionPercentage, color: 'green' }]}
             label={
               <Center>
                 <Icon size={20} stroke={1.5} />
