@@ -1,0 +1,14 @@
+.option {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem;
+    align-items: center;
+
+    &.correctAnswer {
+        background-color: #87ea87;
+    }
+
+    &.incorrectAnswer {
+        background-color: #f19696;
+    }
+}
