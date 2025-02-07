@@ -5,28 +5,31 @@ import { QuizContext } from '@/context';
 import classes from '@/layouts/Main.layout.module.css';
 
 export const Footer = () => {
-  const { currentQuestion, questions, handleGoNext, handleGoBack } = useContext(QuizContext);
+  const { currentQuestion, questions, handleGoNext, handleGoBack, shuffleQuestions } = useContext(QuizContext);
 
   const navigate = useNavigate();
   const location = useLocation();
-  const isSummary = useMemo(() => location.pathname === '/summary', [location.pathname]);
+  const isQuiz = useMemo(() => location.pathname === '/quiz', [location.pathname]);
+
+
 
   const handleFinish = () => {
+    shuffleQuestions();
     navigate('/summary');
   };
 
   const leftArea = useMemo(() => {
     return (
-      !isSummary && (
+      isQuiz && (
         <Button onClick={handleGoBack} disabled={currentQuestion === 0} variant="outline">
           Back
         </Button>
       )
     );
-  }, [currentQuestion, isSummary]);
+  }, [currentQuestion, isQuiz]);
 
   const rightArea = useMemo(() => {
-    if (isSummary) {
+    if (!isQuiz) {
       return;
     }
     return currentQuestion === questions.length - 1 ? (
@@ -38,7 +41,7 @@ export const Footer = () => {
         Next
       </Button>
     );
-  }, [currentQuestion, isSummary]);
+  }, [currentQuestion, isQuiz]);
 
   const footerClassName = () => {
     if (leftArea && rightArea) {
