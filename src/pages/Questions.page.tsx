@@ -2,9 +2,9 @@ import { useContext } from 'react';
 import { QuestionComponent } from '@/components/Question/Question';
 import { Stats } from '@/components/Stats/Stats';
 import { QuizContext } from '@/context';
-import classes from './Home.page.module.css';
+import classes from './Questions.page.module.css';
 
-export function HomePage() {
+export function QuestionsPage() {
   const { questions, currentQuestion, answers, handleSaveAnswer } = useContext(QuizContext);
   return (
     <div className={classes.container}>
