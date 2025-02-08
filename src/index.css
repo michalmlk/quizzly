@@ -5,6 +5,8 @@
     --main-padding: 2rem;
     --layout-background-color: #ffff;
     --layout-border: 1px solid #dddd;
+
+    --language-list-dropdown-width: 50px;
 }
 
 * {
