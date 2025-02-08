@@ -3,9 +3,13 @@
     --header-height: 80px;
 
     --main-padding: 2rem;
-    --layout-background-color: #ffffff;
+    --layout-background-color: #ffff;
     --layout-border: 1px solid #dddd;
     --danger: #f44336;
+
+    --correct-answer-option-color: #87ea87;
+    --wrong-answer-option-color: #f19696;
+    --option-max-width: 420px;
 
     --language-list-dropdown-width: 50px;
 }
@@ -14,4 +18,8 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+.mantine-Button-label {
+    white-space: wrap;
 }
