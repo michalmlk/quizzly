@@ -1,5 +1,6 @@
 import '@mantine/core/styles.css';
-import './index.css'
+import './index.css';
+import './i18n';
 
 import { MantineProvider } from '@mantine/core';
 import { QuizProvider } from '@/context';

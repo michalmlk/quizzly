@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { IconArrowDownRight, IconArrowUpRight } from '@tabler/icons-react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Button, Center, Group, Paper, RingProgress, Text } from '@mantine/core';
 import { QuizContext } from '@/context';
@@ -13,6 +14,7 @@ const icons = {
 export const Summary = () => {
   const { getNumberOfCorrectAnswers, questions, handleResetStats } = useContext(QuizContext);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleReset = () => {
     handleResetStats();
@@ -20,9 +22,7 @@ export const Summary = () => {
   };
 
   const correctAnswers = getNumberOfCorrectAnswers();
-
   const correctionPercentage = (correctAnswers / questions.length) * 100;
-
   const Icon = icons.up;
 
   return (
@@ -43,14 +43,14 @@ export const Summary = () => {
 
           <div>
             <Text c="dimmed" size="xs" tt="uppercase" fw={700}>
-              Correct answers
+              {t('correct answers')}
             </Text>
             <Text fw={700} size="xl">
               {correctAnswers}
             </Text>
           </div>
         </Group>
-        <Button onClick={handleReset}>Try again</Button>
+        <Button onClick={handleReset}>{t('button tryAgain')}</Button>
       </Paper>
     </div>
   );

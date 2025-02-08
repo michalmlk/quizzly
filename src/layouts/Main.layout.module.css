@@ -11,6 +11,7 @@
         display: flex;
         padding: var(--main-padding);
         align-items: center;
+        justify-content: space-between;
         border-bottom: var(--layout-border);
     }
 
@@ -42,5 +43,13 @@
         &.withOnlyLeftArea {
             justify-content: flex-start;
         }
+    }
+}
+
+.languageListDropdown {
+    width: var(--language-list-dropdown-width) !important;
+
+    .languageList {
+        list-style: none;
     }
 }
