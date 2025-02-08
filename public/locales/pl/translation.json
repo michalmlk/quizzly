@@ -5,10 +5,14 @@
   "button confirm": "Potwierdź",
   "button submit": "Zatwierdź",
   "button tryAgain": "Spróbuj ponownie",
-  "button exit": "Porzuć",
+  "button exit": "Wyjdź",
+  "correct answer": "Poprawna odpowiedź:",
+  "correct answers": "Poprawne odpowiedzi",
   "exit quiz modal title": "Opuszczasz quiz",
   "exit quiz confirmation": "Czy jesteś pewny? Postępy zostaną utracone.",
-  "correct answers": "Poprawne odpowiedzi",
+  "mode learning": "Uczenie",
+  "mode challenge": "Wyzwanie",
   "question": "Pytanie",
+  "select mode label": "Wybierz tryb",
   "welcome": "Witaj w Quizzly"
 }

@@ -1,12 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, Radio, Stack, Text } from '@mantine/core';
-import { AnswerMap, Question } from '@/schema';
+import { AnswerMap, ApplicationMode, Question } from '@/schema';
 import classes from './Question.module.css';
 
 interface QuestionProps extends Question {
   currentQuestion: number;
   handleSaveAnswer: (id: number, option: string) => void;
   answers: AnswerMap;
+  mode: ApplicationMode;
 }
 
 export const QuestionComponent = (props: QuestionProps) => {
@@ -18,8 +20,10 @@ export const QuestionComponent = (props: QuestionProps) => {
     id,
     answers,
     handleSaveAnswer,
+    mode,
   } = props;
   const [selectedOption, setSelectedOption] = useState<string | undefined>();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (answers[id]) {
@@ -56,14 +60,26 @@ export const QuestionComponent = (props: QuestionProps) => {
           <Radio.Group onChange={handleCheckAnswer} defaultValue={undefined}>
             <Stack>
               {Object.entries(possibleAnswers).map(([key, value]) => (
-                <Radio.Card value={key} className={`${classes.option} ${getChoiceClassName(key)}`}>
-                  <Radio.Indicator checked={selectedOption === key} />
+                <Radio.Card
+                  value={key}
+                  className={`${classes.option} ${getChoiceClassName(key)}`}
+                  disabled={mode !== 'learning' && !!selectedOption}
+                >
+                  <Radio.Indicator
+                    checked={selectedOption === key}
+                    disabled={mode !== 'learning' && !!selectedOption}
+                  />
                   {typeof value === 'object' ? value[lang] : value}
                 </Radio.Card>
               ))}
             </Stack>
           </Radio.Group>
         ) : null}
+        {selectedOption && selectedOption !== correctAnswer && mode === 'learning' && (
+          <Text mt="lg" fs="lg">
+            {t('correct answer')} {correctAnswer}
+          </Text>
+        )}
       </Card.Section>
     </Card>
   );

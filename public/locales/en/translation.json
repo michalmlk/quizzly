@@ -5,10 +5,14 @@
   "button confirm": "Confirm",
   "button submit": "Submit",
   "button tryAgain": "Try again",
-  "button exit": "Zakończ",
+  "button exit": "Exit",
+  "correct answer": "Correct answer:",
+  "correct answers": "Correct answers",
   "exit quiz modal title": "You're leaving quiz",
   "exit quiz confirmation": "Are you sure? Progress will be lost.",
+  "mode learning": "Learning",
+  "mode challenge": "Challenge",
   "question": "Question",
-  "correct answers": "Correct answers",
+  "select mode label": "Select mode",
   "welcome": "Welcome to Quizzly"
 }

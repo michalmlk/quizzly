@@ -5,6 +5,8 @@ export interface Question {
   correctAnswer: string;
 }
 
+export type ApplicationMode = 'challenge' | 'learning';
+
 export type AnswerMap = Record<number, string>;
 
 export const huntingQuestions: Question[] = [
