@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useState } from 'react';
-import { AnswerMap, huntingQuestions, Question } from '@/schema';
+import { AnswerMap, ApplicationMode, huntingQuestions, Question } from '@/schema';
 
 interface QuizContextModel {
   handleGoNext: () => void;
@@ -8,9 +8,11 @@ interface QuizContextModel {
   handleSaveAnswer: (id: number, option: string) => void;
   currentQuestion: number;
   getNumberOfCorrectAnswers: () => number;
+  handleSetApplicationMode: (mode: ApplicationMode) => void;
   shuffleQuestions: () => void;
   questions: Question[];
   answers: AnswerMap;
+  mode: ApplicationMode;
 }
 
 export const QuizContext = createContext<QuizContextModel>({
@@ -20,20 +22,25 @@ export const QuizContext = createContext<QuizContextModel>({
   handleSaveAnswer: (id: number, option: string) => {},
   getNumberOfCorrectAnswers: (): number => 0,
   shuffleQuestions: () => {},
+  handleSetApplicationMode: (mode: ApplicationMode) => {},
   currentQuestion: 0,
   questions: [],
   answers: [],
+  mode: 'learning',
 });
 
 export const QuizProvider = ({ children }: { children: ReactNode }) => {
   const [currQuestion, setCurrQuestion] = useState(0);
   const [answers, setAnswers] = useState<AnswerMap>({});
   const [questions, setQuestions] = useState<Question[]>(huntingQuestions);
+  const [applicationMode, setApplicationMode] = useState<ApplicationMode>('learning');
 
   const handleResetStats = () => {
     setCurrQuestion(0);
     setAnswers({});
   };
+
+  const handleSetApplicationMode = (mode: ApplicationMode) => setApplicationMode(mode);
 
   const shuffleQuestions = () => {
     const shuffled = questions
@@ -67,11 +74,13 @@ export const QuizProvider = ({ children }: { children: ReactNode }) => {
         handleGoBack,
         handleResetStats,
         currentQuestion: currQuestion,
+        mode: applicationMode,
         questions,
         answers,
         handleSaveAnswer,
         getNumberOfCorrectAnswers,
         shuffleQuestions,
+        handleSetApplicationMode,
       }}
     >
       {children}

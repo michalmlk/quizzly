@@ -9,7 +9,11 @@ import { QuizContext } from '@/context';
 import classes from './Main.layout.module.css';
 
 export const MainLayout = () => {
-  const availableLanguages = ['en', 'pl'];
+  const availableLanguages = [
+    { label: 'EN', value: 'en' },
+    { label: 'PL', value: 'pl' },
+  ];
+
   const { i18n } = useTranslation();
   const handlePickLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
@@ -35,9 +39,9 @@ export const MainLayout = () => {
           <Popover.Dropdown className={classes.languageListDropdown}>
             <ul className={classes.languageList}>
               {availableLanguages.map((language) => (
-                <li key={language}>
-                  <UnstyledButton onClick={() => handlePickLanguage(language)}>
-                    {language}
+                <li key={language.value}>
+                  <UnstyledButton onClick={() => handlePickLanguage(language.value)}>
+                    {language.label}
                   </UnstyledButton>
                 </li>
               ))}

@@ -4,4 +4,11 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
+
+    .actions {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-end;
+    }
+;
 }
