@@ -6,7 +6,6 @@ import { QuizContext } from '@/context';
 import { ApplicationMode } from '@/schema';
 import classes from './Welcome.page.module.css';
 
-
 export const WelcomePage = () => {
   const navigate = useNavigate();
   const { mode, handleSetApplicationMode } = useContext(QuizContext);
@@ -23,15 +22,15 @@ export const WelcomePage = () => {
       <Text size="xl">{t('welcome')}</Text>
       <div className={classes.actions}>
         <Select
-          label={t("select mode label")}
+          label={t('select mode label')}
           onChange={handleModeChange}
           value={selectedMode}
           data={[
-            { value: 'learning', label: t("mode learning")},
-            { value: 'challenge', label: t("mode challenge") },
+            { value: 'learning', label: t('mode learning') },
+            { value: 'challenge', label: t('mode challenge') },
           ]}
         />
-        <Button onClick={() => navigate('/quiz')}>Start</Button>
+        <Button onClick={() => navigate('/quiz')}>{t('button start')}</Button>
       </div>
     </div>
   );

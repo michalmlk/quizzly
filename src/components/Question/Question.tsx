@@ -23,7 +23,7 @@ export const QuestionComponent = (props: QuestionProps) => {
     mode,
   } = props;
   const [selectedOption, setSelectedOption] = useState<string | undefined>();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     if (answers[id]) {
@@ -32,8 +32,6 @@ export const QuestionComponent = (props: QuestionProps) => {
       setSelectedOption(undefined);
     }
   }, [currentQuestion, setSelectedOption]);
-
-  const lang = 'pl';
 
   const getChoiceClassName = useCallback(
     (key: string): string => {
@@ -54,7 +52,7 @@ export const QuestionComponent = (props: QuestionProps) => {
 
   return (
     <Card shadow="sm" p="lg" radius="sm" withBorder className={classes.questionWrapper}>
-      <Text fw={700}>{typeof question === 'object' ? question[lang] : question}</Text>
+      <Text fw={700}>{typeof question === 'object' ? question[i18n.language] : question}</Text>
       <Card.Section py="md" px="lg">
         {Object.keys(possibleAnswers).length > 0 ? (
           <Radio.Group onChange={handleCheckAnswer} defaultValue={undefined}>
@@ -69,16 +67,19 @@ export const QuestionComponent = (props: QuestionProps) => {
                     checked={selectedOption === key}
                     disabled={mode !== 'learning' && !!selectedOption}
                   />
-                  {typeof value === 'object' ? value[lang] : value}
+                  {typeof value === 'object' ? value[i18n.language] : value}
                 </Radio.Card>
               ))}
             </Stack>
           </Radio.Group>
         ) : null}
         {selectedOption && selectedOption !== correctAnswer && mode === 'learning' && (
-          <Text mt="lg" fs="lg">
-            {t('correct answer')} {correctAnswer}
-          </Text>
+          <div className={classes.info}>
+            <Text mt="lg" fs="lg">
+              {t('correct answer')}
+            </Text>
+            <Text fw={700}>{possibleAnswers[`${correctAnswer}`]}</Text>
+          </div>
         )}
       </Card.Section>
     </Card>

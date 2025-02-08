@@ -1,7 +1,7 @@
 export interface Question {
   id: number;
   question: string | Record<string, string>;
-  possibleAnswers: Record<string, string | number | Record<string, string>>;
+  possibleAnswers: Record<string, string>;
   correctAnswer: string;
 }
 

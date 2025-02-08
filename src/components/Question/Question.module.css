@@ -1,6 +1,12 @@
 .questionWrapper {
     width: 100%;
-    max-width: 420px;
+    max-width: var(--option-max-width);
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
 
     .option {
         display: flex;
@@ -8,14 +14,14 @@
         padding: 0.5rem;
         align-items: center;
         width: 100%;
-        max-width: 420px;
+        max-width: var(--option-max-width);
 
         &.correctAnswer {
-            background-color: #87ea87;
+            background-color: var(--correct-answer-option-color);
         }
 
         &.incorrectAnswer {
-            background-color: #f19696;
+            background-color: var(--wrong-answer-option-color);
         }
     }
 }
