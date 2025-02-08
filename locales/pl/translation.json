@@ -1,0 +1,14 @@
+{
+  "button next": "Następne",
+  "button back": "Powrót",
+  "button cancel": "Anuluj",
+  "button confirm": "Potwierdź",
+  "button submit": "Zatwierdź",
+  "button tryAgain": "Spróbuj ponownie",
+  "button exit": "Porzuć",
+  "exit quiz modal title": "Opuszczasz quiz",
+  "exit quiz confirmation": "Czy jesteś pewny? Postępy zostaną utracone.",
+  "correct answers": "Poprawne odpowiedzi",
+  "question": "Pytanie",
+  "welcome": "Witaj w Quizzly"
+}
