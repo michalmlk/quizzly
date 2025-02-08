@@ -49,7 +49,7 @@ export const QuestionComponent = (props: QuestionProps) => {
   };
 
   return (
-    <Card shadow="sm" p="lg" radius="sm" withBorder miw={360}>
+    <Card shadow="sm" p="lg" radius="sm" withBorder className={classes.questionWrapper}>
       <Text fw={700}>{typeof question === 'object' ? question[lang] : question}</Text>
       <Card.Section py="md" px="lg">
         {Object.keys(possibleAnswers).length > 0 ? (

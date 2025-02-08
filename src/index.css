@@ -3,8 +3,9 @@
     --header-height: 80px;
 
     --main-padding: 2rem;
-    --layout-background-color: #ffff;
+    --layout-background-color: #ffffff;
     --layout-border: 1px solid #dddd;
+    --danger: #f44336;
 
     --language-list-dropdown-width: 50px;
 }

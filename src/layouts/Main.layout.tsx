@@ -1,8 +1,11 @@
+import { useContext } from 'react';
 import { IconWorld } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { Popover, UnstyledButton } from '@mantine/core';
 import { Footer } from '@/components/Footer/Footer';
+import { Stats } from '@/components/Stats/Stats';
+import { QuizContext } from '@/context';
 import classes from './Main.layout.module.css';
 
 export const MainLayout = () => {
@@ -12,10 +15,17 @@ export const MainLayout = () => {
     i18n.changeLanguage(lang);
   };
 
+  const { currentQuestion, questions } = useContext(QuizContext);
+  const location = useLocation();
+
   return (
     <div className={classes.root}>
       <header className={classes.header}>
-        <h1>Quizzly</h1>
+        {location.pathname !== '/quiz' ? (
+          <h1>Quizzly</h1>
+        ) : (
+          <Stats currentQuestion={currentQuestion} numOfQuestions={questions.length} />
+        )}
         <Popover width={200} position="bottom" withArrow shadow="md">
           <Popover.Target>
             <UnstyledButton>

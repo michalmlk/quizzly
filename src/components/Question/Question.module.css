@@ -1,14 +1,21 @@
-.option {
-    display: flex;
-    gap: 1rem;
-    padding: 0.5rem;
-    align-items: center;
+.questionWrapper {
+    width: 100%;
+    max-width: 420px;
 
-    &.correctAnswer {
-        background-color: #87ea87;
-    }
+    .option {
+        display: flex;
+        gap: 1rem;
+        padding: 0.5rem;
+        align-items: center;
+        width: 100%;
+        max-width: 420px;
 
-    &.incorrectAnswer {
-        background-color: #f19696;
+        &.correctAnswer {
+            background-color: #87ea87;
+        }
+
+        &.incorrectAnswer {
+            background-color: #f19696;
+        }
     }
 }

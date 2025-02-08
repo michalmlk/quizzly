@@ -11,16 +11,14 @@ export const Stats = ({ currentQuestion, numOfQuestions }: StatsProps) => {
   const percentage = ((currentQuestion + 1) / numOfQuestions) * 100;
   const { t } = useTranslation();
   return (
-    <div className={classes.statsWrapper}>
-      <Card withBorder radius="md" padding="xl" bg="var(--mantine-color-body)">
-        <Text fz="xs" tt="uppercase" fw={700} c="dimmed">
-          {t('question')}
-        </Text>
-        <Text fz="lg" fw={500}>
-          {currentQuestion + 1} / {numOfQuestions}
-        </Text>
-        <Progress value={percentage} mt="md" size="lg" radius="xl" />
-      </Card>
-    </div>
+    <Card withBorder radius="sm" bg="var(--mantine-color-body)" className={classes.statsWrapper}>
+      <Text fz="xs" tt="uppercase" fw={700} c="dimmed">
+        {t('question')}
+      </Text>
+      <Text fz="md" fw={500}>
+        {currentQuestion + 1} / {numOfQuestions}
+      </Text>
+      <Progress value={percentage} mt="md" size="lg" radius="xl" className={classes.progressBar} />
+    </Card>
   );
 };
