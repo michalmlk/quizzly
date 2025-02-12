@@ -11,6 +11,7 @@ interface QuizContextModel {
   handleSetApplicationMode: (mode: ApplicationMode) => void;
   shuffleQuestions: () => void;
   questions: Question[];
+  handleSetQuestions: (questions: Question[]) => void;
   answers: AnswerMap;
   mode: ApplicationMode;
 }
@@ -23,6 +24,7 @@ export const QuizContext = createContext<QuizContextModel>({
   getNumberOfCorrectAnswers: (): number => 0,
   shuffleQuestions: () => {},
   handleSetApplicationMode: (mode: ApplicationMode) => {},
+  handleSetQuestions: (questions: Question[]) => {},
   currentQuestion: 0,
   questions: [],
   answers: [],
@@ -41,6 +43,9 @@ export const QuizProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const handleSetApplicationMode = (mode: ApplicationMode) => setApplicationMode(mode);
+  const handleSetQuestions = (questions: Question[]) => {
+    setQuestions(questions);
+  };
 
   const shuffleQuestions = () => {
     const shuffled = questions
@@ -81,6 +86,7 @@ export const QuizProvider = ({ children }: { children: ReactNode }) => {
         getNumberOfCorrectAnswers,
         shuffleQuestions,
         handleSetApplicationMode,
+        handleSetQuestions,
       }}
     >
       {children}

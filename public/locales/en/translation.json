@@ -15,5 +15,6 @@
   "mode learning": "Learning",
   "question": "Question",
   "select mode label": "Select mode",
+  "schemaInput label": "Load schema",
   "welcome": "Welcome to Quizzly"
 }
