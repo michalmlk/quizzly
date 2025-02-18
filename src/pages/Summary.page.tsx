@@ -3,6 +3,7 @@ import { IconArrowDownRight, IconArrowUpRight } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Button, Center, Group, Paper, RingProgress, Text } from '@mantine/core';
+import { PageWrapper } from '@/components/ui/PageWrapper/PageWrapper';
 import { QuizContext } from '@/context';
 import classes from './Summary.page.module.css';
 
@@ -26,8 +27,8 @@ export const Summary = () => {
   const Icon = icons.up;
 
   return (
-    <div>
-      <Paper withBorder radius="md" className={classes.summaryStats}>
+    <PageWrapper className={classes.summaryContainer}>
+      <Paper withBorder radius="md" className={classes.stats}>
         <Group>
           <RingProgress
             size={80}
@@ -52,6 +53,6 @@ export const Summary = () => {
         </Group>
         <Button onClick={handleReset}>{t('button tryAgain')}</Button>
       </Paper>
-    </div>
+    </PageWrapper>
   );
 };

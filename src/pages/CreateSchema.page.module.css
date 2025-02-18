@@ -1,12 +1,13 @@
-.summaryContainer {
-    flex-direction: row;
+.header {
+    display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 1rem;
+    flex-grow: 1;
 
-    .stats {
+    .actions {
         display: flex;
         align-items: center;
-        gap: 2rem;
-        padding: 1rem 2rem;
+        gap: 1rem;
     }
 }

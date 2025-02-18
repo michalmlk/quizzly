@@ -14,6 +14,8 @@ interface QuizContextModel {
   handleSetQuestions: (questions: Question[]) => void;
   answers: AnswerMap;
   mode: ApplicationMode;
+  isSchemaValid: boolean;
+  handleSetSchemaValidity: (schemaValidity: boolean) => void;
 }
 
 export const QuizContext = createContext<QuizContextModel>({
@@ -29,6 +31,8 @@ export const QuizContext = createContext<QuizContextModel>({
   questions: [],
   answers: [],
   mode: 'learning',
+  isSchemaValid: false,
+  handleSetSchemaValidity: (schemaValidity: boolean) => {},
 });
 
 export const QuizProvider = ({ children }: { children: ReactNode }) => {
@@ -36,10 +40,15 @@ export const QuizProvider = ({ children }: { children: ReactNode }) => {
   const [answers, setAnswers] = useState<AnswerMap>({});
   const [questions, setQuestions] = useState<Question[]>(huntingQuestions);
   const [applicationMode, setApplicationMode] = useState<ApplicationMode>('learning');
+  const [isSchemaValid, setIsSchemaValid] = useState(false);
 
   const handleResetStats = () => {
     setCurrQuestion(0);
     setAnswers({});
+  };
+
+  const handleSetSchemaValidity = (schemaValidity: boolean) => {
+    setIsSchemaValid(schemaValidity);
   };
 
   const handleSetApplicationMode = (mode: ApplicationMode) => setApplicationMode(mode);
@@ -87,6 +96,8 @@ export const QuizProvider = ({ children }: { children: ReactNode }) => {
         shuffleQuestions,
         handleSetApplicationMode,
         handleSetQuestions,
+        handleSetSchemaValidity,
+        isSchemaValid,
       }}
     >
       {children}

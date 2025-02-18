@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "question": {
+            "type": "object",
+            "properties": {
+              "pl": {
+                "type": "string"
+              },
+              "en": {
+                "type": "string"
+              }
+            }
+          },
+          "possibleAnswers": {
+            "type": "object",
+            "minProperties": 2,
+            "properties": {
+              "A": {
+                "type": "object",
+                "properties": {
+                  "pl": {
+                    "type": "string,"
+                  },
+                  "en": {
+                    "type": "string,"
+                  }
+                }
+              },
+              "B": {
+                "type": "object",
+                "properties": {
+                  "pl": {
+                    "type": "string,"
+                  },
+                  "en": {
+                    "type": "string,"
+                  }
+                }
+              },
+              "C": {
+                "type": "object",
+                "properties": {
+                  "pl": {
+                    "type": "string,"
+                  },
+                  "en": {
+                    "type": "string,"
+                  }
+                }
+              },
+              "D": {
+                "type": "object",
+                "properties": {
+                  "pl": {
+                    "type": "string,"
+                  },
+                  "en": {
+                    "type": "string,"
+                  }
+                }
+              }
+            },
+            "required": [
+              "A",
+              "B"
+            ]
+          },
+          "correctAnswer": {
+            "enum": [
+              "A",
+              "B",
+              "C",
+              "D"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "question",
+          "possibleAnswers",
+          "correctAnswer"
+        ],
+        "if": {
+          "properties": {
+            "possibleAnswers": {
+              "type": "object"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "correctAnswer": {
+              "enum": {
+                "$data": "1/possibleAnswers"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

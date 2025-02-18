@@ -6,6 +6,7 @@
   "button next": "Następne",
   "button start": "Start",
   "button submit": "Zatwierdź",
+    "button save": "Zapisz",
   "button tryAgain": "Spróbuj ponownie",
   "correct answer": "Poprawna odpowiedź:",
   "correct answers": "Poprawne odpowiedzi",
@@ -16,5 +17,7 @@
   "question": "Pytanie",
   "select mode label": "Wybierz tryb",
   "schemaInput label": "Załącz schemat",
-  "welcome": "Witaj w Quizzly"
+  "switch expert mode": "Expert mode",
+  "welcome": "Witaj w Quizzly",
+  "create schema page title": "Utwórz nowy quiz"
 }

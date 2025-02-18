@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "question": "Jaki jest okres polowań na jelenia byka?",
+    "possibleAnswers": {
+      "A": "21 sierpnia – koniec lutego",
+      "B": "1 września – 31 stycznia",
+      "C": "1 października – 15 lutego",
+      "D": "Cały rok"
+    },
+    "correctAnswer": "A"
+  },
+  {
+    "id": 2,
+    "question": "Jaki jest okres polowań na jelenia łanie?",
+    "possibleAnswers": {
+      "A": "21 sierpnia – koniec lutego",
+      "B": "1 września – 15 stycznia",
+      "C": "1 października – 15 lutego",
+      "D": "Cały rok"
+    },
+    "correctAnswer": "B"
+  },
+  {
+    "id": 3,
+    "question": "Jaki jest okres polowań na cielęta jelenia?",
+    "possibleAnswers": {
+      "A": "21 sierpnia – koniec lutego",
+      "B": "1 września – koniec lutego",
+      "C": "1 października – 15 lutego",
+      "D": "Cały rok"
+    },
+    "correctAnswer": "B"
+  }
+]
+
+
+

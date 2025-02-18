@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { IconWorld } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
-import { Outlet, useLocation } from 'react-router-dom';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { Popover, UnstyledButton } from '@mantine/core';
 import { Footer } from '@/components/Footer/Footer';
 import { Stats } from '@/components/Stats/Stats';
@@ -30,24 +30,27 @@ export const MainLayout = () => {
         ) : (
           <Stats currentQuestion={currentQuestion} numOfQuestions={questions.length} />
         )}
-        <Popover width={200} position="bottom" withArrow shadow="md">
-          <Popover.Target>
-            <UnstyledButton>
-              <IconWorld />
-            </UnstyledButton>
-          </Popover.Target>
-          <Popover.Dropdown className={classes.languageListDropdown}>
-            <ul className={classes.languageList}>
-              {availableLanguages.map((language) => (
-                <li key={language.value}>
-                  <UnstyledButton onClick={() => handlePickLanguage(language.value)}>
-                    {language.label}
-                  </UnstyledButton>
-                </li>
-              ))}
-            </ul>
-          </Popover.Dropdown>
-        </Popover>
+        <div className={classes.links}>
+          <NavLink to="/create">Create</NavLink>
+          <Popover width={200} position="bottom" withArrow shadow="md">
+            <Popover.Target>
+              <UnstyledButton>
+                <IconWorld />
+              </UnstyledButton>
+            </Popover.Target>
+            <Popover.Dropdown className={classes.languageListDropdown}>
+              <ul className={classes.languageList}>
+                {availableLanguages.map((language) => (
+                  <li key={language.value}>
+                    <UnstyledButton onClick={() => handlePickLanguage(language.value)}>
+                      {language.label}
+                    </UnstyledButton>
+                  </li>
+                ))}
+              </ul>
+            </Popover.Dropdown>
+          </Popover>
+        </div>
       </header>
       <section className={classes.main}>
         <Outlet />

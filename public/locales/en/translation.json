@@ -6,6 +6,7 @@
   "button next": "Next",
   "button start": "Start",
   "button submit": "Submit",
+  "button save": "Save",
   "button tryAgain": "Try again",
   "correct answer": "Correct answer:",
   "correct answers": "Correct answers",
@@ -16,5 +17,7 @@
   "question": "Question",
   "select mode label": "Select mode",
   "schemaInput label": "Load schema",
-  "welcome": "Welcome to Quizzly"
+  "switch expert mode": "Expert mode",
+  "welcome": "Welcome to Quizzly",
+  "create schema page title": "Create new quiz"
 }

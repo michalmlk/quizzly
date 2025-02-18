@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Button, ComboboxItem, FileInput, Select, Text } from '@mantine/core';
+import { PageWrapper } from '@/components/ui/PageWrapper/PageWrapper';
 import { QuizContext } from '@/context';
 import { ApplicationMode } from '@/schema';
 import classes from './Welcome.page.module.css';
@@ -39,7 +40,7 @@ export const WelcomePage = () => {
   };
 
   return (
-    <div className={classes.wrapper}>
+    <PageWrapper className={classes.wrapper}>
       <Text size="xl">{t('welcome')}</Text>
       <div className={classes.actions}>
         <Select
@@ -59,6 +60,6 @@ export const WelcomePage = () => {
         />
         <Button onClick={() => navigate('/quiz')}>{t('button start')}</Button>
       </div>
-    </div>
+    </PageWrapper>
   );
 };
