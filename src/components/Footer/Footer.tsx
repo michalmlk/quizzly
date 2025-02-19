@@ -27,6 +27,7 @@ export const Footer = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const isQuiz = useMemo(() => location.pathname === '/quiz', [location.pathname]);
+  const isSettingsPage = useMemo(() => location.pathname === '/create', [location.pathname]);
 
   const { t, i18n } = useTranslation();
 
@@ -37,21 +38,30 @@ export const Footer = () => {
 
   const leftArea = useMemo(() => {
     return (
-      isQuiz && (
-        <div className={classes.footerArea}>
-          <Button onClick={open} className={classes.exitButton}>
-            {t('button exit')}
-          </Button>
-          <Button onClick={handleGoBack} disabled={currentQuestion === 0} variant="outline">
-            {t('button back')}
-          </Button>
-        </div>
-      )
+      <>
+        {isQuiz && (
+          <div className={classes.footerArea}>
+            <Button onClick={open} className={classes.exitButton}>
+              {t('button exit')}
+            </Button>
+            <Button onClick={handleGoBack} disabled={currentQuestion === 0} variant="outline">
+              {t('button back')}
+            </Button>
+          </div>
+        )}
+        {isSettingsPage && (
+          <div className={classes.footerArea}>
+            <Button onClick={() => navigate('/')} className={classes.exitButton}>
+              {t('button exit')}
+            </Button>
+          </div>
+        )}
+      </>
     );
   }, [currentQuestion, isQuiz, i18n.language]);
 
   const rightArea = useMemo(() => {
-    if (!isQuiz) {
+    if (!isQuiz || isSettingsPage) {
       return;
     }
     return currentQuestion === questions.length - 1 ? (

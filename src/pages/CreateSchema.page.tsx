@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button, Switch, Text } from '@mantine/core';
+import { Switch, Text } from '@mantine/core';
 import { SchemaEditor } from '@/components/Editor/Editor';
 import { PageWrapper } from '@/components/ui/PageWrapper/PageWrapper';
 import classes from './CreateSchema.page.module.css';
@@ -22,14 +22,13 @@ export const CreateSchemaPage = () => {
             labelPosition="left"
             defaultChecked
           />
-          <Button>{t('button save')}</Button>
         </div>
       </div>
     );
   }, [isExpertMode, t]);
 
   useEffect(() => {
-    setIsExpertMode(isSchemaValid);
+    setIsExpertMode(true);
   }, [isExpertMode]);
 
   return (
