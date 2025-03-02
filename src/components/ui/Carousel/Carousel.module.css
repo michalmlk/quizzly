@@ -9,6 +9,7 @@
     align-items: center;
     display: flex;
     flex-grow: 1;
+    max-width: 420px;
 
     .card {
         border: 1px solid #ddd;

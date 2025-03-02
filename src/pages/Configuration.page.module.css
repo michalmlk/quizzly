@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    .imageContainer {
+        flex-grow: 1;
+        margin-bottom: 20px;
+        max-width: 480px;
+    }
+
+    .configuration {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-end;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        gap: 4rem;
+        align-items: center;
+
+        .imageContainer {
+            flex-grow: 0;
+            margin-bottom: 20px;
+        }
+
+        .configuration {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+        }
+    }
+}

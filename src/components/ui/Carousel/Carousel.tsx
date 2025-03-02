@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { Carousel } from '@mantine/carousel';
 import { Button, Paper, Title } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
@@ -16,6 +17,9 @@ export const CarouselComponent = (props: CarouselProps) => {
   const mobile = useMediaQuery(`(max-width: 540px`);
   const { t } = useTranslation();
   const { currentLanguage } = useLanguage();
+
+  const navigate = useNavigate();
+
   return (
     <Carousel
       slideSize={{ base: '100%', sm: '50%' }}
@@ -39,7 +43,7 @@ export const CarouselComponent = (props: CarouselProps) => {
                   {cardTitle}
                 </Title>
               </div>
-              <Button onClick={() => onSet(item)}>{t('button select')}</Button>
+              <Button onClick={() => navigate(`/overview/${item.id}`)}>{t('button select')}</Button>
             </Paper>
           </Carousel.Slide>
         );

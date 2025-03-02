@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useState } from 'react';
 import { carQuestions } from '@/mocks/resources';
-import { AnswerMap, ApplicationMode, huntingQuestions, QuestionsData } from '@/schema';
+import { AnswerMap, ApplicationMode, QuestionsData } from '@/schema';
 
 interface QuizContextModel {
   handleGoNext: () => void;

@@ -21,5 +21,6 @@
   "schemaInput label": "Load schema",
   "switch expert mode": "Expert mode",
   "welcome": "Welcome to Quizzly",
-  "create schema page title": "Create new quiz"
+  "create schema page title": "Create new quiz",
+  "quiz overview page title": "Selected: "
 }

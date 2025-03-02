@@ -29,6 +29,11 @@ export const Footer = () => {
   const location = useLocation();
   const isQuiz = useMemo(() => location.pathname === '/quiz', [location.pathname]);
   const isSettingsPage = useMemo(() => location.pathname === '/create', [location.pathname]);
+  const isOverviewPage = useMemo(
+    () => location.pathname.includes('/overview'),
+    [location.pathname]
+  );
+
   const { questions } = questionsData;
 
   const { t } = useTranslation();
@@ -55,7 +60,14 @@ export const Footer = () => {
         {isSettingsPage && (
           <div className={classes.footerArea}>
             <Button onClick={() => navigate('/')} className={classes.exitButton}>
-              {t('button exit')}
+              {t('button back')}
+            </Button>
+          </div>
+        )}
+        {isOverviewPage && (
+          <div className={classes.footerArea}>
+            <Button onClick={() => navigate('/')} className={classes.exitButton}>
+              {t('button back')}
             </Button>
           </div>
         )}
