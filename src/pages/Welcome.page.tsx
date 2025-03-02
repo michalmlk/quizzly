@@ -2,8 +2,10 @@ import { useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Button, ComboboxItem, FileInput, Select, Text } from '@mantine/core';
+import { CarouselComponent } from '@/components/ui/Carousel/Carousel';
 import { PageWrapper } from '@/components/ui/PageWrapper/PageWrapper';
 import { QuizContext } from '@/context';
+import { animalQuestions, carQuestions, fashionQuestions, techQuestions } from '@/mocks/resources';
 import { ApplicationMode } from '@/schema';
 import classes from './Welcome.page.module.css';
 
@@ -11,6 +13,8 @@ export const WelcomePage = () => {
   const navigate = useNavigate();
   const { mode, handleSetApplicationMode, handleSetQuestions } = useContext(QuizContext);
   const { t } = useTranslation();
+
+  const quizes = [carQuestions, animalQuestions, fashionQuestions, techQuestions];
 
   const [selectedMode, setSelectedMode] = useState<ApplicationMode>(mode);
 
@@ -59,6 +63,9 @@ export const WelcomePage = () => {
           placeholder={t('schemaInput label')}
         />
         <Button onClick={() => navigate('/quiz')}>{t('button start')}</Button>
+      </div>
+      <div className={classes.quizCarouselWrapper}>
+        <CarouselComponent data={quizes} onSet={handleSetQuestions}/>
       </div>
     </PageWrapper>
   );

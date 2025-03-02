@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Card, Radio, Stack, Text } from '@mantine/core';
+import { useLanguage } from '@/hooks/useLanguage';
 import { AnswerMap, ApplicationMode, Question } from '@/schema';
 import classes from './Question.module.css';
 
@@ -23,7 +24,8 @@ export const QuestionComponent = (props: QuestionProps) => {
     mode,
   } = props;
   const [selectedOption, setSelectedOption] = useState<string | undefined>();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
+  const { currentLanguage } = useLanguage();
 
   useEffect(() => {
     if (answers[id]) {
@@ -52,7 +54,7 @@ export const QuestionComponent = (props: QuestionProps) => {
 
   return (
     <Card shadow="sm" p="lg" radius="sm" withBorder className={classes.questionWrapper}>
-      <Text fw={700}>{typeof question === 'object' ? question[i18n.language] : question}</Text>
+      <Text fw={700}>{typeof question === 'object' ? question[currentLanguage] : question}</Text>
       <Card.Section py="md" px="lg">
         {Object.keys(possibleAnswers).length > 0 ? (
           <Radio.Group onChange={handleCheckAnswer} defaultValue={undefined}>
@@ -67,7 +69,7 @@ export const QuestionComponent = (props: QuestionProps) => {
                     checked={selectedOption === key}
                     disabled={mode !== 'learning' && !!selectedOption}
                   />
-                  {typeof value === 'object' ? value[i18n.language] : value}
+                  {typeof value === 'object' ? value[currentLanguage] : value}
                 </Radio.Card>
               ))}
             </Stack>
@@ -78,7 +80,7 @@ export const QuestionComponent = (props: QuestionProps) => {
             <Text mt="lg" fs="lg">
               {t('correct answer')}
             </Text>
-            <Text fw={700}>{possibleAnswers[`${correctAnswer}`]}</Text>
+            <Text fw={700}>{possibleAnswers[`${correctAnswer}`][`${currentLanguage}`]}</Text>
           </div>
         )}
       </Card.Section>

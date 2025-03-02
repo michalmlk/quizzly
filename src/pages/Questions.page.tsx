@@ -5,11 +5,11 @@ import { QuizContext } from '@/context';
 import classes from './Questions.page.module.css';
 
 export function QuestionsPage() {
-  const { questions, currentQuestion, answers, handleSaveAnswer, mode } = useContext(QuizContext);
+  const { questionsData, currentQuestion, answers, handleSaveAnswer, mode } = useContext(QuizContext);
   return (
     <PageWrapper className={classes.questionArea}>
       <QuestionComponent
-        {...questions[currentQuestion]}
+        {...questionsData.questions[currentQuestion]}
         currentQuestion={currentQuestion}
         answers={answers}
         handleSaveAnswer={handleSaveAnswer}

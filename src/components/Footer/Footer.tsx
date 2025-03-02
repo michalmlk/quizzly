@@ -5,12 +5,13 @@ import { Button } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { Modal } from '@/components/Modal/Modal';
 import { QuizContext } from '@/context';
+import { useLanguage } from '@/hooks/useLanguage';
 import classes from '@/layouts/Main.layout.module.css';
 
 export const Footer = () => {
   const {
     currentQuestion,
-    questions,
+    questionsData,
     handleGoNext,
     handleGoBack,
     shuffleQuestions,
@@ -28,8 +29,10 @@ export const Footer = () => {
   const location = useLocation();
   const isQuiz = useMemo(() => location.pathname === '/quiz', [location.pathname]);
   const isSettingsPage = useMemo(() => location.pathname === '/create', [location.pathname]);
+  const { questions } = questionsData;
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
+  const { currentLanguage } = useLanguage();
 
   const handleFinish = () => {
     shuffleQuestions();
@@ -58,7 +61,7 @@ export const Footer = () => {
         )}
       </>
     );
-  }, [currentQuestion, isQuiz, i18n.language]);
+  }, [currentQuestion, isQuiz, currentLanguage, location.pathname]);
 
   const rightArea = useMemo(() => {
     if (!isQuiz || isSettingsPage) {
@@ -73,7 +76,7 @@ export const Footer = () => {
         {t('button next')}
       </Button>
     );
-  }, [currentQuestion, isQuiz, i18n.language]);
+  }, [currentQuestion, isQuiz, currentLanguage, location.pathname]);
 
   const footerClassName = () => {
     if (leftArea && rightArea) {

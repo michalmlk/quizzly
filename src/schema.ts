@@ -1,6 +1,5 @@
 import { JSONSchemaType } from 'ajv';
 
-
 export interface Question {
   id: number;
   question: { en?: string; pl: string };
@@ -18,12 +17,26 @@ export type ApplicationMode = 'challenge' | 'learning';
 export type AnswerMap = Record<number, string>;
 
 export interface QuestionsData {
+  id: string;
+  title: { en?: string; pl: string };
+  imageUrl: string;
   questions: Question[];
 }
 
 export const questionsSchema: JSONSchemaType<QuestionsData> = {
   type: 'object',
   properties: {
+    id: {
+      type: 'string',
+    },
+    title: {
+      type: 'object',
+      properties: { en: { type: 'string', nullable: true }, pl: { type: 'string' } },
+      required: ['pl'],
+    },
+    imageUrl: {
+      type: 'string',
+    },
     questions: {
       type: 'array',
       items: {
@@ -72,10 +85,10 @@ export const questionsSchema: JSONSchemaType<QuestionsData> = {
         },
         required: ['id', 'question', 'possibleAnswers', 'correctAnswer'],
       },
-    }
+    },
   },
   required: ['questions'],
-  additionalProperties: false
+  additionalProperties: false,
 };
 
 export const huntingQuestions: Question[] = [

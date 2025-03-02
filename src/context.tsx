@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useState } from 'react';
-import { AnswerMap, ApplicationMode, huntingQuestions, Question } from '@/schema';
+import { carQuestions } from '@/mocks/resources';
+import { AnswerMap, ApplicationMode, huntingQuestions, QuestionsData } from '@/schema';
 
 interface QuizContextModel {
   handleGoNext: () => void;
@@ -10,8 +11,8 @@ interface QuizContextModel {
   getNumberOfCorrectAnswers: () => number;
   handleSetApplicationMode: (mode: ApplicationMode) => void;
   shuffleQuestions: () => void;
-  questions: Question[];
-  handleSetQuestions: (questions: Question[]) => void;
+  questionsData: QuestionsData;
+  handleSetQuestions: (questions: QuestionsData) => void;
   answers: AnswerMap;
   mode: ApplicationMode;
   isSchemaValid: boolean;
@@ -26,9 +27,9 @@ export const QuizContext = createContext<QuizContextModel>({
   getNumberOfCorrectAnswers: (): number => 0,
   shuffleQuestions: () => {},
   handleSetApplicationMode: (mode: ApplicationMode) => {},
-  handleSetQuestions: (questions: Question[]) => {},
+  handleSetQuestions: (questionsData: QuestionsData) => {},
   currentQuestion: 0,
-  questions: [],
+  questionsData: {} as QuestionsData,
   answers: [],
   mode: 'learning',
   isSchemaValid: false,
@@ -38,7 +39,7 @@ export const QuizContext = createContext<QuizContextModel>({
 export const QuizProvider = ({ children }: { children: ReactNode }) => {
   const [currQuestion, setCurrQuestion] = useState(0);
   const [answers, setAnswers] = useState<AnswerMap>({});
-  const [questions, setQuestions] = useState<Question[]>(huntingQuestions);
+  const [questionsData, setQuestionsData] = useState<QuestionsData>(carQuestions);
   const [applicationMode, setApplicationMode] = useState<ApplicationMode>('learning');
   const [isSchemaValid, setIsSchemaValid] = useState(false);
 
@@ -52,17 +53,20 @@ export const QuizProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const handleSetApplicationMode = (mode: ApplicationMode) => setApplicationMode(mode);
-  const handleSetQuestions = (questions: Question[]) => {
-    setQuestions(questions);
+  const handleSetQuestions = (data: QuestionsData) => {
+    setQuestionsData(data);
   };
 
   const shuffleQuestions = () => {
-    const shuffled = questions
+    const shuffled = questionsData.questions
       .map((value) => ({ value, sortProperty: Math.random() }))
       .sort((a, b) => a.sortProperty - b.sortProperty)
       .map(({ value }) => value);
 
-    setQuestions(shuffled);
+    setQuestionsData((prev) => ({
+      ...prev,
+      questions: shuffled,
+    }));
   };
 
   const handleSaveAnswer = (id: number, selectedAnswer: string) => {
@@ -70,11 +74,11 @@ export const QuizProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const handleGoNext = () =>
-    setCurrQuestion((prev) => (prev < huntingQuestions.length - 1 ? prev + 1 : prev));
+    setCurrQuestion((prev) => (prev < questionsData.questions.length - 1 ? prev + 1 : prev));
   const handleGoBack = () => setCurrQuestion((prev) => (prev > 0 ? prev - 1 : prev));
 
   const getNumberOfCorrectAnswers = (): number =>
-    questions.reduce((acc: number, question) => {
+    questionsData.questions.reduce((acc: number, question) => {
       if (question.id in answers && question.correctAnswer === answers[question.id]) {
         return acc + 1;
       }
@@ -89,7 +93,7 @@ export const QuizProvider = ({ children }: { children: ReactNode }) => {
         handleResetStats,
         currentQuestion: currQuestion,
         mode: applicationMode,
-        questions,
+        questionsData,
         answers,
         handleSaveAnswer,
         getNumberOfCorrectAnswers,

@@ -13,10 +13,13 @@ const icons = {
 };
 
 export const Summary = () => {
-  const { getNumberOfCorrectAnswers, questions, handleResetStats } = useContext(QuizContext);
+  const {
+    getNumberOfCorrectAnswers,
+    questionsData: { questions },
+    handleResetStats,
+  } = useContext(QuizContext);
   const navigate = useNavigate();
   const { t } = useTranslation();
-
   const handleReset = () => {
     handleResetStats();
     navigate('/');

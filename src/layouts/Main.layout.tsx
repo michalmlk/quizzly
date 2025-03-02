@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import { IconWorld } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
-import { NavLink, Outlet, useLocation } from 'react-router-dom';
-import { Popover, UnstyledButton } from '@mantine/core';
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
+import { Button, Popover, UnstyledButton } from '@mantine/core';
 import { Footer } from '@/components/Footer/Footer';
 import { Stats } from '@/components/Stats/Stats';
 import { QuizContext } from '@/context';
@@ -14,12 +14,12 @@ export const MainLayout = () => {
     { label: 'PL', value: 'pl' },
   ];
 
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const handlePickLanguage = (lang: string) => {
     i18n.changeLanguage(lang);
   };
 
-  const { currentQuestion, questions } = useContext(QuizContext);
+  const { currentQuestion, questionsData } = useContext(QuizContext);
   const location = useLocation();
 
   return (
@@ -28,10 +28,15 @@ export const MainLayout = () => {
         {location.pathname !== '/quiz' ? (
           <h1>Quizzly</h1>
         ) : (
-          <Stats currentQuestion={currentQuestion} numOfQuestions={questions.length} />
+          <Stats
+            currentQuestion={currentQuestion}
+            numOfQuestions={questionsData.questions?.length}
+          />
         )}
         <div className={classes.links}>
-          <NavLink to="/create">Create</NavLink>
+          <Link to="/create">
+            <Button>{t('button create')}</Button>
+          </Link>
           <Popover width={200} position="bottom" withArrow shadow="md">
             <Popover.Target>
               <UnstyledButton>
