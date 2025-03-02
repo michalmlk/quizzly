@@ -1,4 +1,5 @@
 {
+  "button add": "Add from schema",
   "button back": "Back",
   "button cancel": "Cancel",
   "button confirm": "Confirm",
@@ -14,13 +15,16 @@
   "correct answers": "Correct answers",
   "exit quiz confirmation": "Are you sure? Progress will be lost.",
   "exit quiz modal title": "You're leaving quiz",
+  "explore quizes": "Explore quizes",
   "mode challenge": "Challenge",
   "mode learning": "Learning",
+  "most popular quizes": "Most popular",
   "question": "Question",
   "select mode label": "Select mode",
   "schemaInput label": "Load schema",
   "switch expert mode": "Expert mode",
   "welcome": "Welcome to Quizzly",
+  "welcome description": "Pretty cool learning platform.",
   "create schema page title": "Create new quiz",
   "quiz overview page title": "Selected: "
 }

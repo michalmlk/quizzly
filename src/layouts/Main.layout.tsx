@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { IconWorld } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
-import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Button, Popover, UnstyledButton } from '@mantine/core';
 import { Footer } from '@/components/Footer/Footer';
 import { Stats } from '@/components/Stats/Stats';
@@ -37,6 +37,7 @@ export const MainLayout = () => {
           <Link to="/create">
             <Button>{t('button create')}</Button>
           </Link>
+          <Button variant="outline">{t('button add')}</Button>
           <Popover width={200} position="bottom" withArrow shadow="md">
             <Popover.Target>
               <UnstyledButton>

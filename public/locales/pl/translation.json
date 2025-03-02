@@ -1,4 +1,5 @@
 {
+  "button add": "Dodaj nowy schemat",
   "button back": "Powrót",
   "button cancel": "Anuluj",
   "button confirm": "Potwierdź",
@@ -14,13 +15,16 @@
   "correct answers": "Poprawne odpowiedzi",
   "exit quiz confirmation": "Czy jesteś pewny? Postępy zostaną utracone.",
   "exit quiz modal title": "Opuszczasz quiz",
+  "explore quizes": "Przeglądaj quizy",
   "mode challenge": "Wyzwanie",
   "mode learning": "Uczenie",
+  "most popular quizes": "Najpopularniejsze",
   "question": "Pytanie",
   "select mode label": "Wybierz tryb",
   "schemaInput label": "Załącz schemat",
   "switch expert mode": "Expert mode",
   "welcome": "Witaj w Quizzly",
+  "welcome description": "Platforma learningowa",
   "create schema page title": "Utwórz nowy quiz",
   "quiz overview page title": "Wybrano: "
 }

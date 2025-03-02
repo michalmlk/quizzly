@@ -9,11 +9,10 @@ import classes from './Carousel.module.css';
 
 interface CarouselProps {
   data: QuestionsData[];
-  onSet: (data: QuestionsData) => void;
 }
 
 export const CarouselComponent = (props: CarouselProps) => {
-  const { data, onSet } = props;
+  const { data } = props;
   const mobile = useMediaQuery(`(max-width: 540px`);
   const { t } = useTranslation();
   const { currentLanguage } = useLanguage();

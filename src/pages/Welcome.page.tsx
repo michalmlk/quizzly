@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
+import { IconArrowRight } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { Button, ComboboxItem, FileInput, Select, Text } from '@mantine/core';
 import { CarouselComponent } from '@/components/ui/Carousel/Carousel';
 import { PageWrapper } from '@/components/ui/PageWrapper/PageWrapper';
@@ -45,27 +46,40 @@ export const WelcomePage = () => {
 
   return (
     <PageWrapper className={classes.wrapper}>
-      <Text size="xl">{t('welcome')}</Text>
-      <div className={classes.actions}>
-        <Select
-          label={t('select mode label')}
-          onChange={handleModeChange}
-          value={selectedMode}
-          data={[
-            { value: 'learning', label: t('mode learning') },
-            { value: 'challenge', label: t('mode challenge') },
-          ]}
-        />
-        <FileInput
-          label={t('schemaInput label')}
-          accept=".json"
-          onChange={handleFileChange}
-          placeholder={t('schemaInput label')}
-        />
-        <Button onClick={() => navigate('/quiz')}>{t('button start')}</Button>
+      <div className={classes.header}>
+        <div className={classes.text}>
+          <h1>{t('welcome')}</h1>
+          <div className={classes.description}>
+            <p>{t('welcome description')}</p>
+            <Button>
+              <Link className={classes.linkMore} to="/quizes">
+                {t('explore quizes')}
+              </Link>
+            </Button>
+          </div>
+        </div>
+        {/*<div className={classes.actions}>*/}
+        {/*  <Select*/}
+        {/*    label={t('select mode label')}*/}
+        {/*    onChange={handleModeChange}*/}
+        {/*    value={selectedMode}*/}
+        {/*    data={[*/}
+        {/*      { value: 'learning', label: t('mode learning') },*/}
+        {/*      { value: 'challenge', label: t('mode challenge') },*/}
+        {/*    ]}*/}
+        {/*  />*/}
+        {/*  <FileInput*/}
+        {/*    label={t('schemaInput label')}*/}
+        {/*    accept=".json"*/}
+        {/*    onChange={handleFileChange}*/}
+        {/*    placeholder={t('schemaInput label')}*/}
+        {/*  />*/}
+        {/*  <Button onClick={() => navigate('/quiz')}>{t('button start')}</Button>*/}
+        {/*</div>*/}
       </div>
       <div className={classes.quizCarouselWrapper}>
-        <CarouselComponent data={quizes} onSet={handleSetQuestions}/>
+        <h1>{t('most popular quizes')}</h1>
+        <CarouselComponent data={quizes} />
       </div>
     </PageWrapper>
   );

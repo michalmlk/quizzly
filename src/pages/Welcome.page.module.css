@@ -1,14 +1,70 @@
 .wrapper {
     align-items: center;
+    padding: 0;
 
-    .actions {
-        display: flex;
-        gap: 1rem;
-        align-items: flex-end;
+    .header {
+        min-height: 50vh;
+        width: 100%;
+        background: rgb(149, 143, 255);
+        background: linear-gradient(180deg, rgba(149, 143, 255, 1) 0%, rgba(141, 205, 255, 1) 27%, rgba(161, 239, 255, 1) 57%, rgba(220, 250, 255, 1) 76%, rgba(255, 255, 255, 1) 100%);
+        padding: 3rem;
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+
+            h1 {
+                font-size: 4rem;
+                grid-area: title;
+            }
+
+            .description {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: 2rem;
+
+                p {
+                    font-size: 1.5rem;
+                    grid-area: description;
+                }
+
+                .linkMore {
+                    grid-area: description;
+                    color: #fff;
+                    text-decoration: none;
+                }
+            }
+        }
+
+        .actions {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-end;
+        }
     }
 
     .quizCarouselWrapper {
         width: 100%;
         padding: 2rem;
+    }
+}
+
+@media (min-width: 540px) {
+    .wrapper {
+        .header {
+            padding: 6rem;
+
+            .text {
+                .description {
+                    align-items: center;
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+            }
+        }
     }
 }
