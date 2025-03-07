@@ -10,7 +10,7 @@ const allResources: QuestionsData[] = [
 ];
 
 export const handlers = [
-  http.get('/quiz/:id', ({ params }) => {
+  http.get('/quizes/:id', ({ params }) => {
     const { id } = params;
     if (id) {
       const res = allResources.find((resource) => resource.id === id);
@@ -19,4 +19,5 @@ export const handlers = [
     }
     return HttpResponse.json(allResources[0]);
   }),
+  http.get('/quizes', () => HttpResponse.json(allResources)),
 ];

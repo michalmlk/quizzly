@@ -26,5 +26,6 @@
   "welcome": "Welcome to Quizzly",
   "welcome description": "Pretty cool learning platform.",
   "create schema page title": "Create new quiz",
-  "quiz overview page title": "Selected: "
+  "quiz overview page title": "Selected: ",
+  "quizes page title": "All quizes"
 }

@@ -16,7 +16,7 @@ export const ConfigurationPage = () => {
 
   useEffect(() => {
     if (id) {
-      fetch(`/quiz/${id}`)
+      fetch(`/quizes/${id}`)
         .then((res) => res.json())
         .then((data) => {
           handleSetQuestions(data);

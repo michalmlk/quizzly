@@ -9,7 +9,7 @@
   "button select": "Wybierz",
   "button start": "Start",
   "button submit": "Zatwierdź",
-    "button save": "Zapisz",
+  "button save": "Zapisz",
   "button tryAgain": "Spróbuj ponownie",
   "correct answer": "Poprawna odpowiedź:",
   "correct answers": "Poprawne odpowiedzi",
@@ -26,5 +26,6 @@
   "welcome": "Witaj w Quizzly",
   "welcome description": "Platforma learningowa",
   "create schema page title": "Utwórz nowy quiz",
-  "quiz overview page title": "Wybrano: "
+  "quiz overview page title": "Wybrano: ",
+  "quizes page title": "Wszystkie quizy"
 }

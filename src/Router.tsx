@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { MainLayout } from '@/layouts/Main.layout';
+import { QuizesPage } from '@/pages/Quizes.page';
 import { Summary } from '@/pages/Summary.page';
 import { ConfigurationPage } from './pages/Configuration.page';
 import { CreateSchemaPage } from './pages/CreateSchema.page';
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: '/quiz',
         element: <QuestionsPage />,
+      },
+      {
+        path: '/quizes',
+        element: <QuizesPage />,
       },
       {
         path: '/overview/:id',
