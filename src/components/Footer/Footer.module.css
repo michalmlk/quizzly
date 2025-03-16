@@ -1,0 +1,32 @@
+.footer {
+    width: 100%;
+    height: var(--footer-height);
+    background-color: var(--color-primary-dark);
+    border-top-left-radius: var(--spacing-md);
+    border-top-right-radius: var(--spacing-md);
+    display: flex;
+    padding: var(--main-padding);
+    align-items: center;
+    justify-content: space-between;
+
+    .footerArea {
+        display: flex;
+        gap: 1rem;
+
+        .exitButton {
+            background-color: var(--danger);
+        }
+    }
+
+    &.invisible {
+        display: none;
+    }
+
+    &.withOnlyRightArea {
+        justify-content: flex-end;
+    }
+
+    &.withOnlyLeftArea {
+        justify-content: flex-start;
+    }
+}

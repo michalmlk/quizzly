@@ -12,9 +12,9 @@ export const PageWrapper = (props: PageWrapperProps) => {
   const { header, children, className } = props;
 
   return (
-    <div className={`${classes.container} ${className ?? ''}`}>
+    <main className={`${classes.container} ${className ?? ''}`}>
       {header ? <PageHeader header={header} /> : null}
       {children}
-    </div>
+    </main>
   );
 };

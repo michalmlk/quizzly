@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Card, Radio, Stack, Text } from '@mantine/core';
 import { useLanguage } from '@/hooks/useLanguage';
@@ -53,7 +53,15 @@ export const QuestionComponent = (props: QuestionProps) => {
   };
 
   return (
-    <Card shadow="sm" p="lg" radius="sm" withBorder className={classes.questionWrapper}>
+    <Card
+      shadow="sm"
+      p="lg"
+      radius="sm"
+      withBorder
+      className={classes.questionWrapper}
+      aria-label={question[currentLanguage]}
+      tabIndex={0}
+    >
       <Text fw={700}>{typeof question === 'object' ? question[currentLanguage] : question}</Text>
       <Card.Section py="md" px="lg">
         {Object.keys(possibleAnswers).length > 0 ? (

@@ -12,7 +12,7 @@
     max-width: 420px;
 
     .card {
-        border: 1px solid #ddd;
+        border-radius: var(--spacing-md);
         height: 220px;
         padding: 0;
         display: flex;

@@ -6,7 +6,7 @@ import { useDisclosure } from '@mantine/hooks';
 import { Modal } from '@/components/Modal/Modal';
 import { QuizContext } from '@/context';
 import { useLanguage } from '@/hooks/useLanguage';
-import classes from '@/layouts/Main.layout.module.css';
+import classes from './Footer.module.css';
 
 export const Footer = () => {
   const {
@@ -91,6 +91,9 @@ export const Footer = () => {
   }, [currentQuestion, isQuiz, currentLanguage, location.pathname]);
 
   const footerClassName = () => {
+    if (location.pathname === '/') {
+      return classes.invisible;
+    }
     if (leftArea && rightArea) {
       return classes.withTwoButtons;
     } else if (rightArea && !leftArea) {

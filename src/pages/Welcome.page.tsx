@@ -49,7 +49,7 @@ export const WelcomePage = () => {
       <div className={classes.header}>
         <div className={classes.text}>
           <h1>{t('welcome')}</h1>
-          <div className={classes.description}>
+          <div className={classes.description} aria-hidden="false">
             <p>{t('welcome description')}</p>
             <Button>
               <Link className={classes.linkMore} to="/quizes">

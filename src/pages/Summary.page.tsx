@@ -31,7 +31,7 @@ export const Summary = () => {
 
   return (
     <PageWrapper className={classes.summaryContainer}>
-      <Paper withBorder radius="md" className={classes.stats}>
+      <Paper withBorder radius="md" className={classes.stats} tabIndex={-1}>
         <Group>
           <RingProgress
             size={80}

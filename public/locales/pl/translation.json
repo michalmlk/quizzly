@@ -13,6 +13,7 @@
   "button tryAgain": "Spróbuj ponownie",
   "correct answer": "Poprawna odpowiedź:",
   "correct answers": "Poprawne odpowiedzi",
+  "choose language": "Wybierz język",
   "exit quiz confirmation": "Czy jesteś pewny? Postępy zostaną utracone.",
   "exit quiz modal title": "Opuszczasz quiz",
   "explore quizes": "Przeglądaj quizy",
@@ -27,5 +28,6 @@
   "welcome description": "Platforma learningowa",
   "create schema page title": "Utwórz nowy quiz",
   "quiz overview page title": "Wybrano: ",
-  "quizes page title": "Wszystkie quizy"
+  "quizes page title": "Wszystkie quizy",
+  "search": "Szukaj"
 }

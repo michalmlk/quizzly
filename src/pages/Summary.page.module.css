@@ -1,12 +1,16 @@
 .summaryContainer {
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+
+    &:focus {
+        outline: 2px solid var(--color-primary)
+    }
 
     .stats {
         display: flex;
         align-items: center;
-        gap: 2rem;
-        padding: 1rem 2rem;
+        gap: var(--spacing-lg);
+        padding: var(--spacing-sm) var(--spacing-md);
     }
 }

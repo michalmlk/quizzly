@@ -29,7 +29,7 @@ export const CarouselComponent = (props: CarouselProps) => {
       {data.map((item) => {
         const cardTitle = item.title[currentLanguage] ?? item.title.pl;
         return (
-          <Carousel.Slide key={item.id} className={classes.slide}>
+          <Carousel.Slide key={item.id} className={classes.slide} aria-label={cardTitle}>
             <Paper
               shadow="sm"
               radius="sm"

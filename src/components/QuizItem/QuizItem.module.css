@@ -1,13 +1,14 @@
 .wrapper {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 1rem;
     width: 100%;
     max-width: 360px;
     background-size: cover;
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: var(--spacing-md);
     height: 240px;
-    border-radius: var(--spacing-sm);
+    border-radius: var(--spacing-md);
     transition: box-shadow 0.2s;
 
     &:hover {

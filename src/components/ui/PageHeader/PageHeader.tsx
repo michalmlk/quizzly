@@ -8,7 +8,7 @@ interface PageHeaderProps {
 
 export const PageHeader = ({ header }: PageHeaderProps) => {
   return (
-    <div className={classes.wrapper}>
+    <header className={classes.wrapper}>
       {header ? (
         typeof header === 'string' ? (
           <Text size="xl" fw={700}>
@@ -18,6 +18,6 @@ export const PageHeader = ({ header }: PageHeaderProps) => {
           <>{header}</>
         )
       ) : null}
-    </div>
+    </header>
   );
 };

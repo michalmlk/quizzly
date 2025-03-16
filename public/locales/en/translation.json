@@ -13,6 +13,7 @@
   "button tryAgain": "Try again",
   "correct answer": "Correct answer:",
   "correct answers": "Correct answers",
+  "choose language": "Choose language",
   "exit quiz confirmation": "Are you sure? Progress will be lost.",
   "exit quiz modal title": "You're leaving quiz",
   "explore quizes": "Explore quizes",
@@ -27,5 +28,6 @@
   "welcome description": "Pretty cool learning platform.",
   "create schema page title": "Create new quiz",
   "quiz overview page title": "Selected: ",
-  "quizes page title": "All quizes"
+  "quizes page title": "All quizes",
+  "search": "Search"
 }

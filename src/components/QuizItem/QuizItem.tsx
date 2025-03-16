@@ -12,7 +12,7 @@ export const QuizItem = (props: QuizItemProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   return (
-    <div className={classes.wrapper} style={{ backgroundImage: `url(${imageUrl})` }}>
+    <div className={classes.wrapper} style={{ backgroundImage: `url(${imageUrl})` }} tabIndex={-1}>
       <Text fw={700} size="xl">
         {title[currentLanguage]}
       </Text>
