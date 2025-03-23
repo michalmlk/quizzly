@@ -45,7 +45,10 @@ export const questionsSchema: JSONSchemaType<QuestionsData> = {
           id: { type: 'integer' },
           question: {
             type: 'object',
-            properties: { en: { type: 'string', nullable: true }, pl: { type: 'string' } },
+            properties: {
+              en: { type: 'string', nullable: true },
+              pl: { type: 'string' },
+            },
             required: ['pl'],
           },
           possibleAnswers: {
@@ -53,17 +56,26 @@ export const questionsSchema: JSONSchemaType<QuestionsData> = {
             properties: {
               A: {
                 type: 'object',
-                properties: { en: { type: 'string', nullable: true }, pl: { type: 'string' } },
+                properties: {
+                  en: { type: 'string', nullable: true },
+                  pl: { type: 'string' },
+                },
                 required: ['pl'],
               },
               B: {
                 type: 'object',
-                properties: { en: { type: 'string', nullable: true }, pl: { type: 'string' } },
+                properties: {
+                  en: { type: 'string', nullable: true },
+                  pl: { type: 'string' },
+                },
                 required: ['pl'],
               },
               C: {
                 type: 'object',
-                properties: { en: { type: 'string', nullable: true }, pl: { type: 'string' } },
+                properties: {
+                  en: { type: 'string', nullable: true },
+                  pl: { type: 'string' },
+                },
                 required: ['pl'],
                 nullable: true,
               },

@@ -1,26 +1,26 @@
 .title {
-    line-height: 1.2;
-    font-size: 32px;
-    margin-top: var(--mantine-spacing-xs);
+  line-height: 1.2;
+  font-size: 32px;
+  margin-top: var(--mantine-spacing-xs);
 }
 
 .slide {
-    height: 300px;
-    align-items: center;
+  height: 300px;
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  max-width: 420px;
+
+  .card {
+    border-radius: var(--spacing-md);
+    height: 220px;
+    padding: 0;
     display: flex;
     flex-grow: 1;
-    max-width: 420px;
-
-    .card {
-        border-radius: var(--spacing-md);
-        height: 220px;
-        padding: 0;
-        display: flex;
-        flex-grow: 1;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: flex-start;
-        background-size: cover;
-        background-position: center;
-    }
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-size: cover;
+    background-position: center;
+  }
 }

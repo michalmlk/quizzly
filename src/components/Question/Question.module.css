@@ -1,31 +1,31 @@
 .questionWrapper {
+  width: 100%;
+  max-width: var(--option-max-width);
+
+  &:focus {
+    outline: 2px solid var(--color-primary);
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .option {
+    display: flex;
+    gap: 1rem;
+    padding: 0.5rem;
+    align-items: center;
     width: 100%;
     max-width: var(--option-max-width);
 
-    &:focus {
-        outline: 2px solid var(--color-primary)
+    &.correctAnswer {
+      background-color: var(--correct-answer-option-color);
     }
 
-    .info {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
+    &.incorrectAnswer {
+      background-color: var(--wrong-answer-option-color);
     }
-
-    .option {
-        display: flex;
-        gap: 1rem;
-        padding: 0.5rem;
-        align-items: center;
-        width: 100%;
-        max-width: var(--option-max-width);
-
-        &.correctAnswer {
-            background-color: var(--correct-answer-option-color);
-        }
-
-        &.incorrectAnswer {
-            background-color: var(--wrong-answer-option-color);
-        }
-    }
+  }
 }

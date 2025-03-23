@@ -6,7 +6,8 @@ export const techQuestions: QuestionsData = {
     pl: 'Technologia',
     en: 'Technology',
   },
-  imageUrl: 'https://images.pexels.com/photos/123335/pexels-photo-123335.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+  imageUrl:
+    'https://images.pexels.com/photos/123335/pexels-photo-123335.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
   questions: [
     {
       id: 1,

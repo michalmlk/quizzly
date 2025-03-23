@@ -1,68 +1,67 @@
 .wrapper {
-    align-items: center;
-    padding: 0;
+  align-items: center;
+  padding: 0;
 
-    .header {
-        min-height: 50vh;
-        width: 100%;
-        padding: var(--spacing-xl);
+  .header {
+    min-height: 50vh;
+    width: 100%;
+    padding: var(--spacing-xl);
 
-        .text {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-md);
+    .text {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
 
+      h1 {
+        font-size: var(--font-size-lg);
+        grid-area: title;
+      }
 
-            h1 {
-                font-size: var(--font-size-lg);
-                grid-area: title;
-            }
+      .description {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: var(--spacing-md);
 
-            .description {
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: flex-start;
-                gap: var(--spacing-md);
-
-                p {
-                    font-size: var(--font-size-md);
-                    grid-area: description;
-                }
-
-                .linkMore {
-                    grid-area: description;
-                    color: #fff;
-                    text-decoration: none;
-                }
-            }
+        p {
+          font-size: var(--font-size-md);
+          grid-area: description;
         }
 
-        .actions {
-            display: flex;
-            gap: var(--spacing-sm);
-            align-items: flex-end;
+        .linkMore {
+          grid-area: description;
+          color: #fff;
+          text-decoration: none;
         }
+      }
     }
 
-    .quizCarouselWrapper {
-        width: 100%;
-        padding: var(--spacing-md);
+    .actions {
+      display: flex;
+      gap: var(--spacing-sm);
+      align-items: flex-end;
     }
+  }
+
+  .quizCarouselWrapper {
+    width: 100%;
+    padding: var(--spacing-md);
+  }
 }
 
 @media (min-width: 540px) {
-    .wrapper {
-        .header {
-            padding: var(--spacing-lg);
+  .wrapper {
+    .header {
+      padding: var(--spacing-lg);
 
-            .text {
-                .description {
-                    align-items: center;
-                    flex-direction: row;
-                    justify-content: space-between;
-                }
-            }
+      .text {
+        .description {
+          align-items: center;
+          flex-direction: row;
+          justify-content: space-between;
         }
+      }
     }
+  }
 }

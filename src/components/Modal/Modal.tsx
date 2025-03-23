@@ -11,15 +11,26 @@ interface ModalProps {
   withCloseButton?: boolean;
 }
 
-export const Modal = ({ isOpen, children, onClose, onAccept, title, withCloseButton = false }: ModalProps) => {
+export const Modal = ({
+  isOpen,
+  children,
+  onClose,
+  onAccept,
+  title,
+  withCloseButton = false,
+}: ModalProps) => {
   const { t } = useTranslation();
 
   return (
     <MantineModal opened={isOpen} onClose={onClose} withCloseButton={withCloseButton} centered>
-      <Text fw={700} fz='xl'>{title}</Text>
+      <Text fw={700} fz="xl">
+        {title}
+      </Text>
       {children}
       <Group mt="xl" justify="space-between">
-        <Button onClick={onClose} variant='outline'>{t('button cancel')}</Button>
+        <Button onClick={onClose} variant="outline">
+          {t('button cancel')}
+        </Button>
         <Button
           onClick={() => {
             onAccept();

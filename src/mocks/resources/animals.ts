@@ -3,7 +3,8 @@ import { QuestionsData } from '@/schema';
 export const animalQuestions: QuestionsData = {
   id: '123abc123',
   title: { en: 'Animals', pl: 'Zwierzęta' },
-  imageUrl: 'https://images.pexels.com/photos/50577/hedgehog-animal-baby-cute-50577.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+  imageUrl:
+    'https://images.pexels.com/photos/50577/hedgehog-animal-baby-cute-50577.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
   questions: [
     {
       id: 1,

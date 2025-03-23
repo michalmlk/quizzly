@@ -1,24 +1,24 @@
 .root {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: var(--color-background);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--color-background);
 
-    .main {
-        overflow: auto;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        flex-grow: 1;
-        height: calc(100vh - var(--header-height) - var(--footer-height));
-    }
+  .main {
+    overflow: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    height: calc(100vh - var(--header-height) - var(--footer-height));
+  }
 }
 
 .languageListDropdown {
-    width: var(--language-list-dropdown-width) !important;
+  width: var(--language-list-dropdown-width) !important;
 
-    .languageList {
-        list-style: none;
-    }
+  .languageList {
+    list-style: none;
+  }
 }

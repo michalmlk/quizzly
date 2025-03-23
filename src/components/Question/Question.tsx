@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Card, Radio, Stack, Text } from '@mantine/core';
 import { useLanguage } from '@/hooks/useLanguage';
 import { AnswerMap, ApplicationMode, Question } from '@/schema';
+import { Card, Radio, Stack, Text } from '@mantine/core';
+import { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import classes from './Question.module.css';
 
 interface QuestionProps extends Question {

@@ -30,9 +30,13 @@ export const TopBar = () => {
       )}
       <nav className={classes.links}>
         <Link to="/create">
-          <Button aria-label={t('button create')} size="md">{t('button create')}</Button>
+          <Button aria-label={t('button create')} size="md">
+            {t('button create')}
+          </Button>
         </Link>
-        <Button variant="outline" aria-label={t('button add')} size="md">{t('button add')}</Button>
+        <Button variant="outline" aria-label={t('button add')} size="md">
+          {t('button add')}
+        </Button>
         <Popover width={200} position="bottom" withArrow shadow="md">
           <Popover.Target>
             <UnstyledButton aria-label={t('choose language')} size="md">
@@ -43,7 +47,10 @@ export const TopBar = () => {
             <ul className={classes.languageList}>
               {availableLanguages.map((language) => (
                 <li key={language.value}>
-                  <UnstyledButton onClick={() => handlePickLanguage(language.value)} aria-label={language.label}>
+                  <UnstyledButton
+                    onClick={() => handlePickLanguage(language.value)}
+                    aria-label={language.label}
+                  >
                     {language.label}
                   </UnstyledButton>
                 </li>
