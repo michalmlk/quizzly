@@ -20,3 +20,10 @@
     gap: 1rem;
   }
 }
+
+.languageList {
+  list-style: none;
+
+  .languageListItem {
+  }
+}
