@@ -1,7 +1,7 @@
 import { useLanguage } from '@/hooks/useLanguage';
 import { AnswerMap, ApplicationMode, Question } from '@/schema';
 import { Card, Radio, Stack, Text } from '@mantine/core';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import classes from './Question.module.css';
 
@@ -47,9 +47,17 @@ export const QuestionComponent = (props: QuestionProps) => {
     [selectedOption, currentQuestion]
   );
 
+  const correctAnswerRef = useRef<HTMLParagraphElement>(null);
+
   const handleCheckAnswer = (option: string) => {
     setSelectedOption(option);
     handleSaveAnswer(id, option);
+
+    setTimeout(() => {
+      if (option !== correctAnswer) {
+        correctAnswerRef.current?.focus();
+      }
+    }, 3000);
   };
 
   return (
@@ -62,8 +70,10 @@ export const QuestionComponent = (props: QuestionProps) => {
       aria-label={question[currentLanguage]}
       tabIndex={0}
     >
-      <Text fw={700}>{typeof question === 'object' ? question[currentLanguage] : question}</Text>
-      <Card.Section py="md" px="lg">
+      <Text fw={700} aria-level={2}>
+        {typeof question === 'object' ? question[currentLanguage] : question}
+      </Text>
+      <Card.Section py="md" px="lg" aria-label={t('quiz options')}>
         {Object.keys(possibleAnswers).length > 0 ? (
           <Radio.Group onChange={handleCheckAnswer} defaultValue={undefined}>
             <Stack>
@@ -75,6 +85,7 @@ export const QuestionComponent = (props: QuestionProps) => {
                 >
                   <Radio.Indicator
                     checked={selectedOption === key}
+                    aria-checked={selectedOption === key}
                     disabled={mode !== 'learning' && !!selectedOption}
                   />
                   {typeof value === 'object' ? value[currentLanguage] : value}
@@ -84,7 +95,7 @@ export const QuestionComponent = (props: QuestionProps) => {
           </Radio.Group>
         ) : null}
         {selectedOption && selectedOption !== correctAnswer && mode === 'learning' && (
-          <div className={classes.info}>
+          <div role="textbox" className={classes.info} ref={correctAnswerRef} tabIndex={0}>
             <Text mt="lg" fs="lg">
               {t('correct answer')}
             </Text>

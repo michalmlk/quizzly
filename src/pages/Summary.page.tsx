@@ -1,10 +1,10 @@
-import { useContext } from 'react';
-import { IconArrowDownRight, IconArrowUpRight } from '@tabler/icons-react';
-import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
-import { Button, Center, Group, Paper, RingProgress, Text } from '@mantine/core';
 import { PageWrapper } from '@/components/ui/PageWrapper/PageWrapper';
 import { QuizContext } from '@/context';
+import { Button, Center, Group, Paper, RingProgress, Text } from '@mantine/core';
+import { IconArrowDownRight, IconArrowUpRight } from '@tabler/icons-react';
+import { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import classes from './Summary.page.module.css';
 
 const icons = {
@@ -31,13 +31,17 @@ export const Summary = () => {
 
   return (
     <PageWrapper className={classes.summaryContainer}>
-      <Paper withBorder radius="md" className={classes.stats} tabIndex={-1}>
+      <Paper withBorder radius="md" className={classes.stats} tabIndex={0}>
         <Group>
           <RingProgress
             size={80}
             roundCaps
             thickness={8}
             sections={[{ value: correctionPercentage, color: 'green' }]}
+            tabIndex={0}
+            role="progressbar"
+            aria-valuenow={correctionPercentage}
+            aria-label={`${t('correction percentage')} ${correctionPercentage}%`}
             label={
               <Center>
                 <Icon size={20} stroke={1.5} />
@@ -45,7 +49,7 @@ export const Summary = () => {
             }
           />
 
-          <div>
+          <div tabIndex={0}>
             <Text c="dimmed" size="xs" tt="uppercase" fw={700}>
               {t('correct answers')}
             </Text>

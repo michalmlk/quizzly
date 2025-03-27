@@ -29,5 +29,7 @@
   "create schema page title": "Create new quiz",
   "quiz overview page title": "Selected: ",
   "quizes page title": "All quizes",
-  "search": "Search"
+  "quiz options": "Options",
+  "search": "Search",
+  "correction percentage": "Correction percentage"
 }

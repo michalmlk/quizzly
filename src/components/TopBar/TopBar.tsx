@@ -3,7 +3,7 @@ import { QuizContext } from '@/context';
 import { useMobileView } from '@/hooks/useMobileView';
 import { Button, Popover, UnstyledButton } from '@mantine/core';
 import { IconWorld } from '@tabler/icons-react';
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
 import classes from './TopBar.module.css';
@@ -23,16 +23,17 @@ export const TopBar = () => {
   const location = useLocation();
 
   const { isMobileView } = useMobileView();
+  const isQuizMode = useMemo(() => location.pathname.includes('quiz'), [location.pathname]);
 
   return (
     <nav className={classes.navigation}>
-      {location.pathname !== '/quiz' ? (
+      {!isQuizMode ? (
         <p>Quizzly</p>
       ) : (
         <Stats currentQuestion={currentQuestion} numOfQuestions={questionsData.questions?.length} />
       )}
       <nav className={classes.links}>
-        {!isMobileView && (
+        {!isMobileView && !isQuizMode && (
           <>
             <Link to="/create">
               <Button aria-label={t('button create')} size="md">
