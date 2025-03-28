@@ -1,13 +1,14 @@
-import { useContext, useState } from 'react';
-import { IconArrowRight } from '@tabler/icons-react';
-import { useTranslation } from 'react-i18next';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { Button, ComboboxItem, FileInput, Select, Text } from '@mantine/core';
 import { CarouselComponent } from '@/components/ui/Carousel/Carousel';
 import { PageWrapper } from '@/components/ui/PageWrapper/PageWrapper';
+import { QUIZES_URL } from '@/config';
 import { QuizContext } from '@/context';
 import { animalQuestions, carQuestions, fashionQuestions, techQuestions } from '@/mocks/resources';
 import { ApplicationMode } from '@/schema';
+import { Button, ComboboxItem, FileInput, Select, Text } from '@mantine/core';
+import { IconArrowRight } from '@tabler/icons-react';
+import { useContext, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import classes from './Welcome.page.module.css';
 
 export const WelcomePage = () => {
@@ -51,11 +52,7 @@ export const WelcomePage = () => {
           <h1>{t('welcome')}</h1>
           <div className={classes.description} aria-hidden="false">
             <p>{t('welcome description')}</p>
-            <Button>
-              <Link className={classes.linkMore} to="/quizes">
-                {t('explore quizes')}
-              </Link>
-            </Button>
+            <Button onClick={() => navigate(QUIZES_URL)}>{t('explore quizes')}</Button>
           </div>
         </div>
         {/*<div className={classes.actions}>*/}

@@ -25,5 +25,8 @@
   list-style: none;
 
   .languageListItem {
+    &:focus {
+      outline: 1px solid red;
+    }
   }
 }

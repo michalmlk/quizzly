@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import { IconSearch } from '@tabler/icons-react';
-import { useTranslation } from 'react-i18next';
-import { Autocomplete, ComboboxStringData } from '@mantine/core';
 import { QuizItem } from '@/components/QuizItem/QuizItem';
 import { PageWrapper } from '@/components/ui/PageWrapper/PageWrapper';
 import { useLanguage } from '@/hooks/useLanguage';
 import { QuestionsData } from '@/schema';
+import { Autocomplete, ComboboxStringData } from '@mantine/core';
+import { IconSearch } from '@tabler/icons-react';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import classes from './Quizes.page.module.css';
 
 export const QuizesPage = () => {
@@ -54,7 +54,7 @@ export const QuizesPage = () => {
           visibleFrom="xs"
         />
       </div>
-      <main className={classes.wrapper}>
+      <div className={classes.wrapper}>
         <section className={classes.quizes}>
           {filteredQuizes.length > 0 &&
             filteredQuizes.map((quiz) => (
@@ -67,7 +67,7 @@ export const QuizesPage = () => {
               />
             ))}
         </section>
-      </main>
+      </div>
     </PageWrapper>
   );
 };

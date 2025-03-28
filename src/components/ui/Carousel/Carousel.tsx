@@ -1,10 +1,11 @@
-import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { QUIZ_OVERVIEW_URL } from '@/config';
+import { useLanguage } from '@/hooks/useLanguage';
+import { QuestionsData } from '@/schema';
 import { Carousel } from '@mantine/carousel';
 import { Button, Paper, Title } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
-import { useLanguage } from '@/hooks/useLanguage';
-import { QuestionsData } from '@/schema';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import classes from './Carousel.module.css';
 
 interface CarouselProps {
@@ -42,7 +43,9 @@ export const CarouselComponent = (props: CarouselProps) => {
                   {cardTitle}
                 </Title>
               </div>
-              <Button onClick={() => navigate(`/overview/${item.id}`)}>{t('button select')}</Button>
+              <Button onClick={() => navigate(`${QUIZ_OVERVIEW_URL}/${item.id}`)}>
+                {t('button select')}
+              </Button>
             </Paper>
           </Carousel.Slide>
         );

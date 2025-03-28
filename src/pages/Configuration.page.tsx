@@ -1,12 +1,13 @@
-import { useContext, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useNavigate, useParams } from 'react-router-dom';
-import { Button, ComboboxItem, Image, Select } from '@mantine/core';
 import { PageHeader } from '@/components/ui/PageHeader/PageHeader';
 import { PageWrapper } from '@/components/ui/PageWrapper/PageWrapper';
+import { QUIZ_URL } from '@/config';
 import { QuizContext } from '@/context';
 import { useLanguage } from '@/hooks/useLanguage';
 import { ApplicationMode } from '@/schema';
+import { Button, ComboboxItem, Image, Select } from '@mantine/core';
+import { useContext, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useNavigate, useParams } from 'react-router-dom';
 import classes from './Configuration.page.module.css';
 
 export const ConfigurationPage = () => {
@@ -54,7 +55,7 @@ export const ConfigurationPage = () => {
               { value: 'challenge', label: t('mode challenge') },
             ]}
           />
-          <Button onClick={() => navigate('/quiz')}>{t('button start')}</Button>
+          <Button onClick={() => navigate(QUIZ_URL)}>{t('button start')}</Button>
         </div>
       </div>
     </PageWrapper>

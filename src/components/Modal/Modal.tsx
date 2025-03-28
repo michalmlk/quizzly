@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Button, Group, Modal as MantineModal, Text } from '@mantine/core';
+import { ReactNode, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface ModalProps {
   isOpen: boolean;
@@ -20,7 +20,6 @@ export const Modal = ({
   withCloseButton = false,
 }: ModalProps) => {
   const { t } = useTranslation();
-
   return (
     <MantineModal opened={isOpen} onClose={onClose} withCloseButton={withCloseButton} centered>
       <Text fw={700} fz="xl">

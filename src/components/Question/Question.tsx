@@ -79,6 +79,7 @@ export const QuestionComponent = (props: QuestionProps) => {
             <Stack>
               {Object.entries(possibleAnswers).map(([key, value]) => (
                 <Radio.Card
+                  key={key}
                   value={key}
                   className={`${classes.option} ${getChoiceClassName(key)}`}
                   disabled={mode !== 'learning' && !!selectedOption}

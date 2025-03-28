@@ -1,11 +1,13 @@
+import { LanguagePicker } from '@/components/LanguagePicker/LanguagePicker';
 import { Stats } from '@/components/Stats/Stats';
+import { CREATE_URL } from '@/config';
 import { QuizContext } from '@/context';
+import { useLocationState } from '@/hooks/useLocationState';
 import { useMobileView } from '@/hooks/useMobileView';
-import { Button, Popover, UnstyledButton } from '@mantine/core';
-import { IconWorld } from '@tabler/icons-react';
-import { useContext, useMemo } from 'react';
+import { Button } from '@mantine/core';
+import { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import classes from './TopBar.module.css';
 
 export const TopBar = () => {
@@ -20,54 +22,32 @@ export const TopBar = () => {
   };
 
   const { currentQuestion, questionsData } = useContext(QuizContext);
-  const location = useLocation();
-
   const { isMobileView } = useMobileView();
-  const isQuizMode = useMemo(() => location.pathname.includes('quiz'), [location.pathname]);
+  const { isHomePage, isQuiz } = useLocationState();
+  const navigate = useNavigate();
 
   return (
-    <nav className={classes.navigation}>
-      {!isQuizMode ? (
-        <p>Quizzly</p>
-      ) : (
+    <header className={classes.navigation}>
+      {!isQuiz && <p>Quizzly</p>}
+      {isQuiz && (
         <Stats currentQuestion={currentQuestion} numOfQuestions={questionsData.questions?.length} />
       )}
       <nav className={classes.links}>
-        {!isMobileView && !isQuizMode && (
+        {!isMobileView && isHomePage && (
           <>
-            <Link to="/create">
-              <Button aria-label={t('button create')} size="md">
-                {t('button create')}
-              </Button>
-            </Link>
+            <Button aria-label={t('button create')} size="md" onClick={() => navigate(CREATE_URL)}>
+              {t('button create')}
+            </Button>
             <Button variant="outline" aria-label={t('button add')} size="md">
               {t('button add')}
             </Button>
           </>
         )}
-        <Popover width={200} position="bottom" withArrow shadow="md">
-          <Popover.Target>
-            <UnstyledButton aria-label={t('choose language')} size="md">
-              <IconWorld />
-            </UnstyledButton>
-          </Popover.Target>
-          <Popover.Dropdown className={classes.languageListDropdown}>
-            <ul className={classes.languageList}>
-              {availableLanguages.map((language) => (
-                <li key={language.value}>
-                  <UnstyledButton
-                    className={classes.languageListItem}
-                    onClick={() => handlePickLanguage(language.value)}
-                    aria-label={language.label}
-                  >
-                    {language.label}
-                  </UnstyledButton>
-                </li>
-              ))}
-            </ul>
-          </Popover.Dropdown>
-        </Popover>
+        <LanguagePicker
+          availableLanguages={availableLanguages}
+          handlePickLanguage={handlePickLanguage}
+        />
       </nav>
-    </nav>
+    </header>
   );
 };

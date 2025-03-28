@@ -1,4 +1,4 @@
-import { ReactNode, forwardRef } from 'react';
+import { ReactNode, Ref, forwardRef } from 'react';
 import { PageHeader } from '../PageHeader/PageHeader';
 import classes from './PageWrapper.module.css';
 
@@ -6,15 +6,16 @@ interface PageWrapperProps {
   header?: ReactNode;
   children: ReactNode;
   className?: string;
+  ref?: Ref<HTMLDivElement>;
 }
 
-export const PageWrapper = forwardRef((props: PageWrapperProps, ref) => {
-  const { header, children, className } = props;
+export const PageWrapper = (props: PageWrapperProps) => {
+  const { header, children, className, ref } = props;
 
   return (
-    <main className={`${classes.container} ${className ?? ''}`} ref={ref}>
+    <div className={`${classes.container} ${className ?? ''}`} ref={ref}>
       {header ? <PageHeader header={header} /> : null}
       {children}
-    </main>
+    </div>
   );
-});
+};

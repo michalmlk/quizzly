@@ -1,11 +1,12 @@
-import { useContext, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Button } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
 import { Modal } from '@/components/Modal/Modal';
 import { QuizContext } from '@/context';
 import { useLanguage } from '@/hooks/useLanguage';
+import { useLocationState } from '@/hooks/useLocationState';
+import { Button } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import { useContext, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useLocation, useNavigate } from 'react-router-dom';
 import classes from './Footer.module.css';
 
 export const Footer = () => {
@@ -26,14 +27,8 @@ export const Footer = () => {
   };
 
   const navigate = useNavigate();
-  const location = useLocation();
-  const isQuiz = useMemo(() => location.pathname === '/quiz', [location.pathname]);
-  const isSettingsPage = useMemo(() => location.pathname === '/create', [location.pathname]);
-  const isOverviewPage = useMemo(
-    () => location.pathname.includes('/overview'),
-    [location.pathname]
-  );
 
+  const { isQuiz, isSettingsPage, isOverviewPage, isHomePage } = useLocationState();
   const { questions } = questionsData;
 
   const { t } = useTranslation();
@@ -73,7 +68,7 @@ export const Footer = () => {
         )}
       </>
     );
-  }, [currentQuestion, isQuiz, currentLanguage, location.pathname]);
+  }, [currentQuestion, isQuiz, currentLanguage, isSettingsPage, isOverviewPage]);
 
   const rightArea = useMemo(() => {
     if (!isQuiz || isSettingsPage) {
@@ -88,10 +83,10 @@ export const Footer = () => {
         {t('button next')}
       </Button>
     );
-  }, [currentQuestion, isQuiz, currentLanguage, location.pathname]);
+  }, [currentQuestion, isQuiz, currentLanguage, isSettingsPage]);
 
   const footerClassName = () => {
-    if (location.pathname === '/') {
+    if (isHomePage) {
       return classes.invisible;
     }
     if (leftArea && rightArea) {
